@@ -23,6 +23,8 @@ export default function TicketDet() {
     handleClearAll();
   }
 
+ 
+
   return (
     <div className="w-[37%] mt-[40px] mb-[30px] h-max p-[20px] border-[#0E464F] rounded-[40px] border-[1px] max-lg:w-[60%] max-md:w-[80%] max-sm:w-[90%] max-xs:w-[97%]">
       <div className="flex items-start flex-col justify-center w-[100%] ">
@@ -77,17 +79,17 @@ export default function TicketDet() {
                 <p className="font-roboto mt-[2px] p-[2px] text-[10px] w-[90%] font-[400] text-[#FFFFFF] opacity-[0.33]">
                   Enter your name
                 </p>
-                <p className="font-roboto mb-[2px] p-[2px] text-[12px] w-[70%] font-[700] text-[#FFFFFF]">
+                <p className="font-roboto mb-[2px] p-[2px] text-[12px] w-[90%] whitespace-nowrap overflow-hidden text-ellipsis font-[700] text-[#FFFFFF]">
                   {attendeeInfo.name}
                 </p>
               </div>
 
-              <div className="flex flex-col items-start justify-center ">
+              <div className="flex flex-col items-start justify-center w-[90%] ">
                 <p className="font-roboto mt-[2px] p-[2px] text-[10px] w-[90%] font-[400] text-[#FFFFFF] opacity-[0.33]">
                   {" "}
                   Enter your email *
                 </p>
-                <p className="font-roboto mb-[2px] p-[2px] text-[12px] w-[70%] font-[700] text-[#FFFFFF]">
+                <p className="font-roboto mb-[2px] p-[2px] text-[12px] w-[90%] whitespace-nowrap overflow-hidden text-ellipsis font-[700] text-[#FFFFFF]">
                   {attendeeInfo.email}
                 </p>
               </div>
@@ -139,7 +141,7 @@ export default function TicketDet() {
           {" "}
           Book Another Ticket
         </button>
-        <button className="w-[50%] h-[48px] bg-[#24A0B5] cursor-pointer  font-[400] text-[#ffffff] text-[16px] outline-none border-[1px] border-[#24A0B5] rounded-[8px] max-sm:w-[100%]">
+        <button className="w-[50%] h-[48px]  bg-[#24A0B5] cursor-not-allowed  font-[400] text-[#ffffff] text-[16px] outline-none border-[1px] border-[#24A0B5] rounded-[8px] max-sm:w-[100%]">
           Download Ticket
         </button>
       </div>

@@ -56,7 +56,7 @@ export default function Ticket() {
                 className="absolute w-[100%] h-[100%] opacity-0 cursor-pointer"
               />
               <span
-                className={` inline-block px-4 py-2 rounded-md cursor-pointer transition-colors duration-200 border-[1px] border-[#197686] max-sm:w-[100%] ${
+                className={` inline-block px-4 py-2 rounded-md  cursor-pointer transition-colors duration-200 border-[1px] border-[#197686] max-sm:w-[100%] ${
                   selectedTicket.ticket === ticket.type
                     ? "bg-[#12464E]  "
                     : "bg-transparent"

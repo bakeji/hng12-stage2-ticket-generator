@@ -42,6 +42,10 @@ export default function Atendee() {
     } else navigate("/ticket");
   }
 
+  function PrevBtn(){
+    navigate("/");
+  }
+
   console.log(attendeeInfo, pictureUrl);
 
   return (
@@ -150,7 +154,7 @@ export default function Atendee() {
           </div>
 
           <div className="mt-[20px] flex items-center justify-center gap-[20px]  max-sm:flex-col">
-            <button className="w-[50%] cursor-pointer h-[38px] bg-[transparent] font-[400] text-[#24A0B5] text-[16px] outline-none border-[1px] border-[#24A0B5] rounded-[8px] max-sm:w-[100%]">
+            <button onClick={PrevBtn} className="w-[50%] cursor-pointer h-[38px] bg-[transparent] font-[400] text-[#24A0B5] text-[16px] outline-none border-[1px] border-[#24A0B5] rounded-[8px] max-sm:w-[100%]">
               Back
             </button>
             <button
