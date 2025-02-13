@@ -118,7 +118,7 @@ export default function TicketDet() {
                 Special request?
               </p>
               <p className="font-roboto mb-[2px] p-[2px] text-[12px]  font-[700] text-[#FFFFFF]">
-                {selectedTicket.text}
+                {selectedTicket.text? selectedTicket.text : "Nil"}
               </p>
             </div>
           </div>

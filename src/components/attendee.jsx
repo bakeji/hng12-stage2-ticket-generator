@@ -18,7 +18,6 @@ export default function Atendee() {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      // Set the base64 data directly
       setPictureUrl(reader.result);
     };
 
@@ -139,12 +138,13 @@ export default function Atendee() {
               Special request?
             </label>
             <textarea
-              className="h-[127px] w-[100%] rounded-[12px] outline-none p-5 border-[#07373F] border-[1px] "
+              className="h-[127px] resize-none w-[100%] rounded-[12px] outline-none p-5 border-[#07373F] border-[1px] "
               name="text"
               id="gext"
+              maxLength="100"
               placeholder="Textarea"
               required
-              value={attendeeInfo.value}
+              value={attendeeInfo.tex}
               onChange={handleChange}
             ></textarea>
           </div>
