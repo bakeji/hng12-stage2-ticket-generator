@@ -10,6 +10,8 @@ const {pictureUrl, selectedTicket, setPictureUrl, attendeeInfo } = useContext(Ti
         }
     }, []);
 console.log(pictureUrl)
+
+
     return(
         <div className="w-[37%] mt-[40px] mb-[30px] h-max p-[20px] border-[#0E464F] rounded-[40px] border-[1px]">
             <div className="flex items-start flex-col justify-center w-[100%] ">

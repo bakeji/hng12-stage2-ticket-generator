@@ -6,30 +6,23 @@ import { TicketContext } from "../context/ticketcontext"
 
 export default function Atendee(){
     
-    const {attendeeInfo, selectedTicket, setAttendeeInfo, pictureUrl, setPictureUrl} = useContext(TicketContext)
+    const {attendeeInfo, handleSaveData, selectedTicket, setAttendeeInfo, pictureUrl, setPictureUrl} = useContext(TicketContext)
+
+    function handleFile(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onloadend = () => {
+            // Set the base64 data directly
+            setPictureUrl(reader.result);
+        };
+    
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }    
 
 
-function handleFile(e){
-    const file = e.target.files[0]
-    const url = URL.createObjectURL(file)
-    setPictureUrl(url)
-    reader.onloadend = () => {
-        localStorage.setItem("savedImage", reader.result); 
-        setPictureUrl(reader.result);
-    };
-
-    reader.readAsDataURL(file);
-}
-
-
-
-useEffect(() => {
-    return () => {
-      if (pictureUrl) {
-        URL.revokeObjectURL(pictureUrl);
-      }
-    };
-  }, []);
 
 function handleChange(e){
         const {name, value} = e.target
@@ -48,6 +41,7 @@ if(!attendeeInfo.name || !attendeeInfo.email || !pictureUrl){
 else(
     navigate("/ticket")
 )
+handleSaveData()
 }
 
 console.log(attendeeInfo, pictureUrl)

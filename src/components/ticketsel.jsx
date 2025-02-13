@@ -8,6 +8,7 @@ export default function Ticket(){
     const navigate = useNavigate()
 function nextBtn(){
     navigate("/attendee")
+
 }
     return(
         <div className="w-[37%] mt-[40px] h-max p-[20px] border-[#0E464F] rounded-[40px] border-[1px]">
