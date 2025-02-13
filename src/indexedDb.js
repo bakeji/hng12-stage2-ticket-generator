@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const useEventDB = () => {
     const [db, setDb] = useState(null);
     const [error, setError] = useState(null);
-    const [isReady, setIsReady] = useState(false);  // Add this line
+    const [isReady, setIsReady] = useState(false);
 
     useEffect(() => {
         const request = indexedDB.open('EventDatabase', 1);
@@ -14,7 +14,7 @@ const useEventDB = () => {
 
         request.onsuccess = (event) => {
             setDb(event.target.result);
-            setIsReady(true);  // Add this line
+            setIsReady(true);  
         };
 
         request.onupgradeneeded = (event) => {
@@ -31,8 +31,8 @@ const useEventDB = () => {
 
     const saveEventData = async (data) => {
         return new Promise((resolve, reject) => {
-            if (!isReady) {  // Changed this line
-                return; // Silent return instead of reject
+            if (!isReady) {  
+                return;
             }
 
             const transaction = db.transaction(['eventData'], 'readwrite');
@@ -48,10 +48,25 @@ const useEventDB = () => {
         });
     };
 
+    const clearAllData = async () => {
+        return new Promise((resolve, reject) => {
+            if (!isReady) {
+                return;
+            }
+
+            const transaction = db.transaction(['eventData'], 'readwrite');
+            const store = transaction.objectStore('eventData');
+            const request = store.clear(); 
+
+            request.onsuccess = () => resolve();
+            request.onerror = () => reject(request.error);
+        });
+    };
+
     const loadEventData = async () => {
         return new Promise((resolve, reject) => {
-            if (!isReady) {  // Changed this line
-                resolve(null); // Silent resolve instead of reject
+            if (!isReady) {  
+                resolve(null); 
                 return;
             }
 
@@ -68,7 +83,8 @@ const useEventDB = () => {
         isReady, 
         error,
         saveEventData,
-        loadEventData
+        loadEventData,
+        clearAllData
     };
 };
 

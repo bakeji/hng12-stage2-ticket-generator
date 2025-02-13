@@ -8,6 +8,12 @@
   --font-rage: "Road Rage", serif;
   --font-roboto: "Roboto", serif;
   --font-alatsi: "Alatsi", serif;
+   --breakpoint-2x:  1535px;
+   --breakpoint-xl: 1279px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-md: 768px;
+  --breakpoint-sm: 639px;
+  --breakpoint-xs: 475px;
 }
 
 @layer base{
