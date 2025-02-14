@@ -54,4 +54,4 @@ Follow these steps to set up and run the project locally.
    pnpm dev
 
 4. **Open the app:**
-Visit http://localhost:3000 in your browser to view the app.
+Visit http://localhost:5173 in your browser to view the app.
