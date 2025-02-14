@@ -13,6 +13,34 @@ export default function Atendee() {
     setPictureUrl,
   } = useContext(TicketContext);
   const [error, setErrror]=useState(false)
+  const [dragging, setDragging] = useState(false);
+
+  const handleDrag = (e) => {
+    e.preventDefault();
+    setDragging(true);
+  };  
+
+  const handleDragLeave = () => {
+    setDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setDragging(false);
+
+    const droppedFile = e.dataTransfer.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+        setPictureUrl(reader.result);
+      };
+        if (droppedFile) {
+            reader.readAsDataURL(droppedFile)
+
+
+  };
+  }
+
 
   function handleFile(e) {
     const file = e.target.files[0];
@@ -76,7 +104,11 @@ export default function Atendee() {
             Upload Profile Photo
           </p>
           <div className="h-[200px] mt-[20px] w-[100%] mb-[30px] bg-[rgba(0,_0,_0,_0.20)] flex-col items-center justify-center ">
-            <div className="flex w-[240px] flex-col items-center justify-center bg-[#0E464F] rounded-[32px] relative bottom-[28px] h-[256px] mb-[25px] mx-[auto] border-[rgba(36,_160,_181,_0.50)]">
+            <div 
+            onDragOver={handleDrag}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+            className="flex w-[240px] flex-col items-center justify-center bg-[#0E464F] rounded-[32px] relative bottom-[28px] h-[256px] mb-[25px] mx-[auto] border-[rgba(36,_160,_181,_0.50)]">
               {!pictureUrl && <img src="/cloud.png" alt="cloud" />}
               {pictureUrl && (
                 <img
