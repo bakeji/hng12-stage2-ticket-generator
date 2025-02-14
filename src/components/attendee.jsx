@@ -108,28 +108,27 @@ export default function Atendee() {
             onDragOver={handleDrag}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-            className="flex w-[240px] flex-col items-center justify-center bg-[#0E464F] rounded-[32px] relative bottom-[28px] h-[256px] mb-[25px] mx-[auto] border-[rgba(36,_160,_181,_0.50)]">
-              {!pictureUrl && <img src="/cloud.png" alt="cloud" />}
-              {pictureUrl && (
-                <img
-                  className=" w-[240px] h-[270px] rounded-[32px]"
-                  src={pictureUrl}
-                  alt="picture"
-                />
-              )}
+            style={{ backgroundImage: pictureUrl ? `url(${pictureUrl})` : "none" }}
+            className= {`flex w-[240px] flex-col items-center cursor-pointer justify-center bg-center bg-cover bg-no-repeat  bg-[#0E464F] rounded-[32px] relative bottom-[28px] h-[256px] mb-[25px] mx-[auto] border-[rgba(36,_160,_181,_0.50)] ${dragging? "bg-[#07373F]" : ""}`}>
+              
+             <div className={`${pictureUrl ? "opacity-0 hover:opacity-100" : ""} w-100%`}  >
+                <div className="flex items-center justify-center"> <img src="/cloud.png" alt="cloud"  /></div>
+              
               <input
-                onChange={handleFile}
+                onChange={handleFile} 
                 type="file"
-                className="opacity w-[100%] absolute h-[100%] opacity-0 "
+                className="opacity w-[100%] absolute h-[100%] opacity-0 cursor-pointer" 
                 name="img"
                 id="pic"
                 accept="image/png, image/jpeg"
+
               />
-              {!pictureUrl && (
-                <label className="text-center relative font-roboto text-[16px] font-[400] text-[#FAFAFA] w-[80%]">
+              
+                <label className={` text-center relative  font-roboto text-[16px] font-[400] text-[#FAFAFA] w-[80%]`}>
                   Drag & drop or click to upload
                 </label>
-              )}
+             </div>
+            
             </div>
           </div>
         </div>
