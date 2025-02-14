@@ -111,8 +111,7 @@ export default function Atendee() {
             style={{ backgroundImage: pictureUrl ? `url(${pictureUrl})` : "none" }}
             className= {`flex w-[240px] flex-col items-center cursor-pointer justify-center bg-center bg-cover bg-no-repeat  bg-[#0E464F] rounded-[32px] relative bottom-[28px] h-[256px] mb-[25px] mx-[auto] border-[rgba(36,_160,_181,_0.50)] ${dragging? "bg-[#07373F]" : ""}`}>
               
-             <div className={`${pictureUrl ? "opacity-0 hover:opacity-100" : ""} w-100%`}  >
-                <div className="flex items-center justify-center"> <img src="/cloud.png" alt="cloud"  /></div>
+             
               
               <input
                 onChange={handleFile} 
@@ -123,6 +122,9 @@ export default function Atendee() {
                 accept="image/png, image/jpeg"
 
               />
+
+            <div className={`${pictureUrl ? "opacity-0 hover:opacity-100" : ""} w-100%`}  >
+            <div className="flex items-center justify-center"> <img src="/cloud.png" alt="cloud"  /></div>
               
                 <label className={` text-center relative  font-roboto text-[16px] font-[400] text-[#FAFAFA] w-[80%]`}>
                   Drag & drop or click to upload
