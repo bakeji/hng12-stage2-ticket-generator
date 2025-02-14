@@ -12,6 +12,7 @@ export default function Atendee() {
     pictureUrl,
     setPictureUrl,
   } = useContext(TicketContext);
+  const [error, setErrror]=useState(false)
 
   function handleFile(e) {
     const file = e.target.files[0];
@@ -25,6 +26,7 @@ export default function Atendee() {
       reader.readAsDataURL(file);
     }
   }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -32,6 +34,12 @@ export default function Atendee() {
       ...prev,
       [name]: value,
     }));
+    if(!emailRegex.test(attendeeInfo.email)){
+      setErrror(true)
+    }
+    else{
+      setErrror(false)
+    }
   }
 
   const navigate = useNavigate();
@@ -45,8 +53,6 @@ export default function Atendee() {
   function PrevBtn(){
     navigate("/");
   }
-
-  console.log(attendeeInfo, pictureUrl);
 
   return (
     <div className="w-[37%] mt-[40px] h-max p-[20px] border-[#0E464F] rounded-[40px] border-[1px] max-lg:w-[60%] max-md:w-[80%] max-sm:w-[90%] max-xs:w-[97%]">
@@ -108,7 +114,7 @@ export default function Atendee() {
               className="h-[48px] w-[100%] rounded-[12px] outline-none p-5 border-[#07373F] border-[1px] "
               type="text"
               name="name"
-              id="name"
+              id="nme"
               onChange={handleChange}
               value={attendeeInfo.name}
               required
@@ -122,16 +128,20 @@ export default function Atendee() {
             >
               Enter your email *
             </label>
+           <div className="flex items-center h-[48px] w-[100%] gap-1 p-5 border-[#07373F] rounded-[12px] border-[1px]  ">
+            {!attendeeInfo.email && <img src="/icon.png" alt="mail " />}
             <input
-              className="h-[48px] w-[100%] rounded-[12px] outline-none p-5 border-[#07373F] border-[1px] "
+              className="h-[40px] w-[100%] outline-none"
               type="email"
               name="email"
-              id="email"
+              id="mail"
               value={attendeeInfo.email}
               onChange={handleChange}
               placeholder="hello@avioflagos.io"
               required
             />
+           </div>
+            {error && <p className=" text-[12px] font-roboto font-[400] text-[#FF0000]">Please enter a valid email</p>}
           </div>
 
           <div className="flex flex-col gap-[10px]">
